@@ -1,29 +1,24 @@
 import {Injectable} from '@angular/core';
-import {ITask, ITodolist} from "./api.service";
+import {ITask, ITodolist} from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppStateService {
-  state: Array<ITodolist>
+  state: Array<ITodolist>|any;
 
   constructor() {
   }
 
   setTodoLists(todolists: Array<ITodolist>) {
-    this.state = todolists
+    this.state = todolists;
   }
-
-  consoleState() {
-    console.log(this.state)
-  }
-
   setTodoListTasks(todolistId: string, tasks: Array<ITask>) {
     this.state.map((item) => {
       if (item._id === todolistId) {
-        return item.tasks = tasks
+        return item.tasks = tasks;
       }
-    })
-    console.log(this.state)
+    });
+    console.log(this.state);
   }
 }

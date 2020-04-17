@@ -1,0 +1,5 @@
+<div class="todoList-newTaskForm">
+  <input (change)="inputErrorStyleOff()" [class.inputErrorStyle]="this.inputErrorStyle" type="text"
+         placeholder="Add new task"    [(ngModel)]="this.inputValue"/>
+  <button (click)="this.addNewItem()">+</button>
+</div>

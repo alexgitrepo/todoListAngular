@@ -1,10 +1,8 @@
-<div class="todoList-task">
+<div class="todoList-task" [class.taskChecked]="this.task.status===2">
   <input type="checkbox" [checked]="(this.task.status === 2)" (change)="changeInputValue($event)"/>
-
+  <span>{{this.index+1}}</span>
   <span>{{this.task.title}}</span>
-
   <span>task priority: {{this.task.priority}}</span>
-
   <button onClick={}><img class='todoList-header__delete-button-img' src='../../assets/images/rubbish.svg' alt=""/>
   </button>
 </div>

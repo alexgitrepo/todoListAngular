@@ -8,6 +8,9 @@ import { TodolistHeaderComponent } from './todolist-header/todolist-header.compo
 import { TodolistTaskComponent } from './todolist-task/todolist-task.component';
 import { TodolistTasksComponent } from './todolist-tasks/todolist-tasks.component';
 import {HttpClientModule} from "@angular/common/http";
+import { ItemInputComponent } from './item-input/item-input.component';
+import {FormsModule} from '@angular/forms';
+import { TodoListInputComponent } from './todo-list-input/todo-list-input.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import {HttpClientModule} from "@angular/common/http";
     TodolistFooterComponent,
     TodolistHeaderComponent,
     TodolistTaskComponent,
-    TodolistTasksComponent
+    TodolistTasksComponent,
+    ItemInputComponent,
+    TodoListInputComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

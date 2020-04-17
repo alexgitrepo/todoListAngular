@@ -1,5 +1,5 @@
 <div class="todoList">
-  <app-todolist-header class="todoList-header" [todoListId]="this.todoList._id" [title]="this.todoList.title"></app-todolist-header>
+  <app-todolist-header [todoListId]="this.todoList._id" [title]="this.todoList.title"></app-todolist-header>
   <div class="todoList__wrapper">
     <app-todolist-tasks [todoListId]="this.todoList._id" [todoListTasks]="this.todoList.tasks"></app-todolist-tasks>
     <app-todolist-footer></app-todolist-footer>

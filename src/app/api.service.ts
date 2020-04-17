@@ -22,7 +22,10 @@ export interface ITask {
   deadline?: string | null
   addedDate?: string | null
 }
-
+export interface IResponse {
+  resultCode:string
+  item:ITask
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -40,7 +43,7 @@ export class ApiService {
   }
 
   addTodoList(title: string) {
-    return this.http.post<string>('https://radiant-plains-31062.herokuapp.com/todo-lists', {title: title})
+    return this.http.post<IResponse>('https://radiant-plains-31062.herokuapp.com/todo-lists', {title: title})
   }
 
   deleteTodoList(todolistId: string) {
@@ -48,7 +51,7 @@ export class ApiService {
   }
 
   addTask(taskTitle: string, todolistId: string) {
-    return this.http.post(`https://radiant-plains-31062.herokuapp.com/todo-lists/${todolistId}/tasks`, {title: taskTitle})
+    return this.http.post<any>(`https://radiant-plains-31062.herokuapp.com/todo-lists/${todolistId}/tasks`, {title: taskTitle})
   }
 
   updateTask(task: ITask, taskId: string, todoListId: string) {

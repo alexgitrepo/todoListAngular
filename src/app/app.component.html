@@ -1,5 +1,6 @@
+<app-todo-list-input></app-todo-list-input>
 <div class="todoLists">
-<div *ngFor="let todoList of state.state">
-  <app-todolist [todoList]="todoList"></app-todolist>
-</div>
+  <div *ngFor="let todoList of state.state">
+    <app-todolist [todoList]="todoList"></app-todolist>
+  </div>
 </div>

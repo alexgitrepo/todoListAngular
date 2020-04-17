@@ -7,7 +7,7 @@ import {FooterService} from "../todolist-footer/footer.service";
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
   styleUrls: ['./todolist.component.css'],
-  providers:[FooterService]
+  providers: [FooterService]
 
 })
 export class TodolistComponent implements OnInit {
