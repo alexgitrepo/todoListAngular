@@ -59,6 +59,6 @@ export class ApiService {
   }
 
   deleteTask(taskId, todoListId) {
-    return this.http.delete(`https://radiant-plains-31062.herokuapp.com/todo-lists/${todoListId}/tasks/${taskId}`)
+    return this.http.delete<any>(`https://radiant-plains-31062.herokuapp.com/todo-lists/${todoListId}/tasks/${taskId}`)
   }
 }

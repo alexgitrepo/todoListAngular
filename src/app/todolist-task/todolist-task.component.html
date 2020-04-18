@@ -3,6 +3,6 @@
   <span>{{this.index+1}}</span>
   <span>{{this.task.title}}</span>
   <span>task priority: {{this.task.priority}}</span>
-  <button onClick={}><img class='todoList-header__delete-button-img' src='../../assets/images/rubbish.svg' alt=""/>
+  <button (click)="this.deleteTask()" ><img class='todoList-header__delete-button-img' src='../../assets/images/rubbish.svg' alt=""/>
   </button>
 </div>

@@ -35,7 +35,25 @@ export class TodolistTaskComponent implements OnInit {
         } else {
           return todolist;
         }
-      })
-    })
+      });
+    });
+  }
+
+  deleteTask() {
+    this.api.deleteTask(this.task._id, this.task.todoListId).subscribe((response) => {
+      console.log(this.task);
+      this.state.state = this.state.state.map((todolist) => {
+        if (todolist.todoListId === this.task.todoListId) {
+          return {
+            ...todolist, tasks: todolist.tasks.filter((task) => {
+              return task._id !== this.task._id;
+            })
+          };
+        } else {
+          return todolist;
+        }
+      });
+      console.log(this.state);
+    });
   }
 }

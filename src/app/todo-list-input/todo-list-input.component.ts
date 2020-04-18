@@ -28,18 +28,6 @@ export class TodoListInputComponent implements OnInit {
       this.api.addTodoList(this.inputValue).subscribe((response) => {
         this.state.state.push(response.item);
       });
-      // this.api.addTask(this.inputValue, this.todoListId).subscribe((response) => {
-      //     this.state.state = this.state.state.map((todolist) => {
-      //       if (todolist._id === response.item.todolistId) {
-      //         return {
-      //           ...todolist, tasks: [...todolist.tasks, response.item]
-      //         };
-      //       } else {
-      //         return todolist;
-      //       }
-      //     });
-      //   }
-      // );
     }
   }
 

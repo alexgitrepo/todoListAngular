@@ -33,8 +33,6 @@ export class TodolistTasksComponent implements OnInit, AfterContentChecked, DoCh
         }
       });
     });
-
-    this.filterPosition = this.footerService.currentFilterValue;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
