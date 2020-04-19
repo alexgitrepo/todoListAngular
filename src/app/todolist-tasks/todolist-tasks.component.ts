@@ -33,20 +33,8 @@ export class TodolistTasksComponent implements OnInit, AfterContentChecked, DoCh
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.todoListTasksFilter = this.todoListTasks.filter((t) => {
-      if (this.footerService.currentFilterValue === 'all') {
-        return true;
-      } else if (this.footerService.currentFilterValue === 'completed') {
-        if (t.status === 2) {
-          return true;
-        }
-      } else if (this.footerService.currentFilterValue === 'active') {
-        if (t.status === 0) {
-          return true;
-        }
-      }
-    });
+  ngOnChanges(changes: SimpleChanges): void {debugger
+    this.todoListTasksFilter = this.todoListTasks;
   }
 
   ngDoCheck(): void {
