@@ -10,6 +10,10 @@ import {AppStateService} from '../app-state.service';
 export class TodolistTaskComponent implements OnInit {
   @Input() task: ITask;
   @Input() index: number;
+  isTitleEditMode = false;
+  thisNewTaskTitle: '';
+  isPriorityEditMode = false;
+  thisNewTaskPriority: number;
 
   constructor(private api: ApiService, private state: AppStateService) {
   }
@@ -55,5 +59,63 @@ export class TodolistTaskComponent implements OnInit {
       });
       console.log(this.state);
     });
+  }
+
+  updateTaskTitle() {
+    if (!this.thisNewTaskTitle) {
+      this.isTitleEditMode = false;
+    } else {
+      this.api.updateTask({...this.task, title: this.thisNewTaskTitle}, this.task._id, this.task.todoListId).subscribe((response) => {
+        this.state.state = this.state.state.map((todolist) => {
+          if (todolist._id === response.item.todolistId) {
+            return {
+              ...todolist, tasks: todolist.tasks.map((task) => {
+                if (task._id === response.item._id) {
+                  return response.item;
+                } else {
+                  return task;
+                }
+              })
+            };
+          } else {
+            return todolist;
+          }
+        });
+      });
+      this.thisNewTaskTitle = '';
+      this.isTitleEditMode = false;
+    }
+    ;
+
+  }
+
+
+  updateTaskPriority() {
+    if (!this.thisNewTaskPriority) {
+      this.isPriorityEditMode = false;
+    } else {
+      this.api.updateTask({...this.task, priority: this.thisNewTaskPriority}, this.task._id, this.task.todoListId).subscribe((response) => {
+        this.state.state = this.state.state.map((todolist) => {
+          if (todolist._id === response.item.todolistId) {
+            return {
+              ...todolist, tasks: todolist.tasks.map((task) => {
+                if (task._id === response.item._id) {
+                  return response.item;
+                } else {
+                  return task;
+                }
+              })
+            };
+          } else {
+            return todolist;
+          }
+        });
+      });
+      this.thisNewTaskPriority = null;
+      this.isPriorityEditMode = false;
+      ;
+    }
+    ;
+
   }
 }

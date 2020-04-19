@@ -1,8 +1,15 @@
 <div class="todoList-task" [class.taskChecked]="this.task.status===2">
   <input type="checkbox" [checked]="(this.task.status === 2)" (change)="changeInputValue($event)"/>
-  <span>{{this.index+1}}</span>
-  <span>{{this.task.title}}</span>
-  <span>task priority: {{this.task.priority}}</span>
-  <button (click)="this.deleteTask()" ><img class='todoList-header__delete-button-img' src='../../assets/images/rubbish.svg' alt=""/>
+  <span>{{this.index + 1}}</span>
+  <span *ngIf="!this.isTitleEditMode; else titleEditModeSpan" (dblclick)="this.isTitleEditMode=true">{{this.task.title}}</span>
+  <ng-template #titleEditModeSpan>
+    <input placeholder="New title"  [autofocus]="true" (blur)="updateTaskTitle()" [(ngModel)]="thisNewTaskTitle" type="text">
+  </ng-template>
+  <span *ngIf="!this.isPriorityEditMode; else priorityEditModeSpan" (dblclick)="this.isPriorityEditMode=true">task priority: {{this.task.priority}}</span>
+  <ng-template #priorityEditModeSpan>
+    <input placeholder="New priority" [autofocus]="true" (blur)="updateTaskPriority()" [(ngModel)]="thisNewTaskPriority" type="text">
+  </ng-template>
+  <button (click)="this.deleteTask()"><img class='todoList-header__delete-button-img' src='./assets/images/rubbish.svg'
+                                           alt=""/>
   </button>
 </div>
