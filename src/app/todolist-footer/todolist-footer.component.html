@@ -1,7 +1,7 @@
 <div class="todoList-footer">
-  <button (click)="this.changeFilterValue('all')" [class.filter-active]="this.filterVale==='all'">All</button>
-  <button (click)="this.changeFilterValue('completed')" [class.filter-active]="this.filterVale==='completed'">Completed</button>
-  <button (click)="this.changeFilterValue('active')" [class.filter-active]="this.filterVale==='active'">Active
+  <button (click)="this.changeFilterValue('all')" [class.filter-active]="this.footerService.currentFilterValue==='all'">All</button>
+  <button (click)="this.changeFilterValue('completed')" [class.filter-active]="this.footerService.currentFilterValue==='completed'">Completed</button>
+  <button (click)="this.changeFilterValue('active')" [class.filter-active]="this.footerService.currentFilterValue==='active'">Active
   </button>
 </div>
 

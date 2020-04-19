@@ -10,7 +10,6 @@ import {FooterService} from '../todolist-footer/footer.service';
 export class TodolistTasksComponent implements OnInit, AfterContentChecked, DoCheck, OnChanges {
   @Input() todoListId: string;
   @Input() todoListTasks: Array<ITask>;
-  filterPosition: string;
   todoListTasksFilter: Array<ITask> = [];
 
   constructor(private footerService: FooterService) {
@@ -18,15 +17,14 @@ export class TodolistTasksComponent implements OnInit, AfterContentChecked, DoCh
 
   ngOnInit(): void {
     this.footerService.changeFilterValueEmitter.subscribe((value: string) => {
-      this.filterPosition = value;
       this.todoListTasksFilter = this.todoListTasks.filter((t) => {
-        if (this.filterPosition === 'all') {
+        if (this.footerService.currentFilterValue === 'all') {
           return true;
-        } else if (this.filterPosition === 'completed') {
+        } else if (this.footerService.currentFilterValue === 'completed') {
           if (t.status === 2) {
             return true;
           }
-        } else if (this.filterPosition === 'active') {
+        } else if (this.footerService.currentFilterValue === 'active') {
           if (t.status === 0) {
             return true;
           }
@@ -36,7 +34,19 @@ export class TodolistTasksComponent implements OnInit, AfterContentChecked, DoCh
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.todoListTasksFilter = this.todoListTasks;
+    this.todoListTasksFilter = this.todoListTasks.filter((t) => {
+      if (this.footerService.currentFilterValue === 'all') {
+        return true;
+      } else if (this.footerService.currentFilterValue === 'completed') {
+        if (t.status === 2) {
+          return true;
+        }
+      } else if (this.footerService.currentFilterValue === 'active') {
+        if (t.status === 0) {
+          return true;
+        }
+      }
+    });
   }
 
   ngDoCheck(): void {
