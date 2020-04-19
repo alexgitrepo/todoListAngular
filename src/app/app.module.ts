@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { ItemInputComponent } from './item-input/item-input.component';
 import {FormsModule} from '@angular/forms';
 import { TodoListInputComponent } from './todo-list-input/todo-list-input.component';
+import { PreloaderComponent } from './preloader/preloader.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TodoListInputComponent } from './todo-list-input/todo-list-input.compon
     TodolistTaskComponent,
     TodolistTasksComponent,
     ItemInputComponent,
-    TodoListInputComponent
+    TodoListInputComponent,
+    PreloaderComponent
   ],
   imports: [
     BrowserModule,

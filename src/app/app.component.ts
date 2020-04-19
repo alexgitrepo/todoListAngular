@@ -8,12 +8,15 @@ import {AppStateService} from "./app-state.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  preloaderOn=false
   constructor(private api: ApiService, public state: AppStateService) {
   }
 
   ngOnInit(): void {
+    this.preloaderOn=true
     this.api.getTodoLists().subscribe((response) => {
       this.state.setTodoLists(response)
+      this.preloaderOn=false
     })
 
   }

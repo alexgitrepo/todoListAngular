@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ApiService, ITodolist} from "../api.service";
 import {AppStateService} from "../app-state.service";
 import {FooterService} from "../todolist-footer/footer.service";
@@ -7,7 +7,8 @@ import {FooterService} from "../todolist-footer/footer.service";
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
   styleUrls: ['./todolist.component.css'],
-  providers: [FooterService]
+  providers: [FooterService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class TodolistComponent implements OnInit {
